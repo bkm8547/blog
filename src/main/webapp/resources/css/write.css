@@ -1,0 +1,50 @@
+@CHARSET "UTF-8";
+table{
+	margin: 10px auto;
+	border-collapse: collapse;
+}
+table td{
+	padding:5px;
+	text-align: center;
+	border-bottom: 1px solid gray;
+}
+table tr:LAST-OF-TYPE>td:LAST-OF-TYPE{
+	border-top: 1px solid gray;
+	border-bottom: none;
+}
+table td input[type="text"]:focus,textarea:focus{
+	background-color: #d9ffb3;
+}
+table td input[type="submit"],input[type="reset"]{
+	float:right;
+	margin-right:5px;
+	size:20px;
+	padding:10px;
+}
+.title{
+	width: 700px;	
+}
+.title input{
+	width:100%;	
+}
+.writer{
+	width: 300px;
+}
+.writer input{
+	width:100%;	
+}
+.password{
+	width: 300px;
+}
+.password input{
+	width:100%;	
+}
+.content{
+	width: 700px;
+	height:700px;
+}
+.content textarea{
+	resize:none;
+	width: 100%;
+	height:100%;
+}

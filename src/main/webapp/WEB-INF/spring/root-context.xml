@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans.xsd
+   http://www.springframework.org/schema/context 
+      http://www.springframework.org/schema/context/spring-context.xsd">
+	<context:property-placeholder location="/WEB-INF/spring/mysql.properties" />
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${driver}" />
+		<property name="url" value="${url}" />
+		<property name="connectionProperties" value="${connectionProperties}"></property>
+		<property name="username" value="${user}" />
+		<property name="password" value="${password}" />
+	</bean>
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<!-- xml방식 멥핑 -->
+		<property name="mapperLocations" value="classpath:/com/test/dao/boardMapper.xml" />
+	</bean>
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory" />
+	</bean>
+
+
+	<!-- mapper 에노테이션 방식 -->
+	<!-- <bean id="Mapper" class="org.mybatis.spring.mapper.MapperFactoryBean"> -->
+	<!-- <property name="mapperInterface" value="com.rmusic.dao.BoardMapper" 
+		/> -->
+	<!-- <property name="sqlSessionFactory" ref="sqlSessionFactory" /> -->
+	<!-- </bean> -->
+
+	<bean id="BoardService" class="com.test.dao.BoardService">
+		<property name="sqlSession" ref="sqlSession"></property>
+	</bean>
+
+</beans>

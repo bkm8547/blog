@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardMapper">
+  
+  <select id="selectAllCount" resultType="int">
+  	select count(*) from blog_news
+  </select>
+  <select id="selectNewsList" resultType="com.test.dto.BoardDTO">
+  	select no,title,content,wdate,writer,imageUrl from blog_news order by no desc limit 3
+  </select>
+  <select id="selectNews" resultType="com.test.dto.BoardDTO" parameterType="int">
+  	select no,title,content,writer,imageUrl from blog_news where no=#{no}
+  </select>
+  <insert id="insertNews" parameterType="com.test.dto.BoardDTO">
+    insert into blog_news(title,content,writer,password,imageUrl) values(#{title},#{content},#{writer},#{password},#{imageUrl})
+  </insert>
+  <update id="updateNews" parameterType="com.test.dto.BoardDTO">
+  	update blog_news set title=#{title},content=#{content},writer=#{writer},imageUrl=#{imageUrl} where no=#{no} and password=#{password}
+  </update>
+  <delete id="deleteNews" parameterType="com.test.dto.BoardDTO">
+  	delete from blog_news where no=#{no} and password=#{password}
+  </delete>
+</mapper>
