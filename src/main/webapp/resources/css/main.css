@@ -113,6 +113,24 @@ section input[value="글쓰기"]{
 	margin-right: 100px;
 }
 
+.page_bar{
+	width:330px;
+	text-align:center;
+	margin:0 auto;
+	overflow: hidden;
+	margin-top: 40px;
+}
+.page_bar a{
+	display:block;
+	float:left;
+	width:40px;
+	padding: 10px 0;
+	border:1px solid black;
+}
+.page_bar .left_off,.right_off,.page_off{
+	background-color: gray;
+}
+
 footer{
 	width: 100%;
 	height: 150px;

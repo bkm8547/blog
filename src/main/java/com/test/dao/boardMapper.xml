@@ -7,8 +7,8 @@
   <select id="selectAllCount" resultType="int">
   	select count(*) from blog_news
   </select>
-  <select id="selectNewsList" resultType="com.test.dto.BoardDTO">
-  	select no,title,content,wdate,writer,imageUrl from blog_news order by no desc limit 3
+  <select id="selectNewsList" resultType="com.test.dto.BoardDTO" parameterType="int">
+  	select no,title,content,wdate,writer,imageUrl from blog_news order by no desc limit 3 offset #{page}
   </select>
   <select id="selectNews" resultType="com.test.dto.BoardDTO" parameterType="int">
   	select no,title,content,writer,imageUrl from blog_news where no=#{no}

@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.test.dao.BoardService;
 import com.test.dto.BoardDTO;
+import com.test.dto.PagingDTO;
+import com.test.util.Paging;
 
 /**
  * Handles requests for the application home page.
@@ -31,10 +33,17 @@ public class MainController {
 	}
 	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
 	public String home2(HttpServletRequest request, Model model) {
-		List list=boardService.selectNewsList();
+		int page=1;
+		if(request.getParameter("page")!=null){
+			page=Integer.parseInt(request.getParameter("page"));
+		}
+		List list=boardService.selectNewsList(page);
 		int allCount=boardService.selectAllCount();
-		
+		Paging paging=Paging.getInstance();
+		PagingDTO dto=paging.getPaging(allCount, page);
+		model.addAttribute("paging",dto);
 		model.addAttribute("list",list);
+		model.addAttribute("page",page);
 		return "index";
 	}
 	@RequestMapping(value = "/write.do", method = RequestMethod.GET)

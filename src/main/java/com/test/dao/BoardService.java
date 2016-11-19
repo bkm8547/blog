@@ -14,9 +14,11 @@ public class BoardService {
 		this.sqlSession = sqlSession;
 	}
 	
-	public List selectNewsList() {
+	public List selectNewsList(int page) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("boardMapper.selectNewsList");
+		page=(page-1)*3;
+		System.out.println(page);
+		return sqlSession.selectList("boardMapper.selectNewsList",page);
 	}
 	public int insertNews(BoardDTO board) {
 		// TODO Auto-generated method stub

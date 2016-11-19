@@ -23,28 +23,23 @@ public class Paging {
 		return pageInstance;
 	}
 
-	public PagingDTO getPaging(int allCount, HttpServletRequest request) {
-		PagingDTO dto=new PagingDTO();
+	public PagingDTO getPaging(int allCount, int page) {
+		PagingDTO dto = new PagingDTO();
 		this.allCount = allCount;
-		allPage = (allPage / (newsPerPage + 1)) + 1;
-		nowPage = Integer.parseInt(request.getParameter("page"));
-		firstPage = (nowPage / newsPerPage) * newsPerPage + 1;
-		if (allPage > firstPage + newsPerPage - 1)
-			endPage = firstPage + newsPerPage - 1;
-		else {
-			endPage = allPage;
-		}
-		if (allPage > maxPage) {
+		allPage = (allCount-1) / (newsPerPage) + 1;
+		nowPage = page;
+		firstPage = ((nowPage-1)/ maxPage) * maxPage + 1;
+		if (allPage > firstPage + maxPage - 1) {
+			endPage = firstPage + maxPage - 1;
 			rightOn = true;
 		} else {
+			endPage = allPage;
 			rightOn = false;
 		}
-		if(firstPage>1){
-			leftOn=true;
-		}
-		else
-		{
-			leftOn=false;
+		if (firstPage > 1) {
+			leftOn = true;
+		} else {
+			leftOn = false;
 		}
 		dto.setAllCount(allCount);
 		dto.setAllPage(allPage);
