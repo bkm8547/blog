@@ -7,6 +7,8 @@ create table blog_news(no int not null primary key auto_increment,
 				wdate datetime not null default now()				
 )default charset=utf8
 
+alter table blog_news add column recommand int not null default 0;
+
 drop table blog_news;
 
 insert into blog_news(title,content,writer,password) values('1234','1234','1234','1234')

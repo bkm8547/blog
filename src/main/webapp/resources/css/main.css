@@ -120,7 +120,11 @@ section input[value="글쓰기"]{
 	overflow: hidden;
 	margin-top: 40px;
 }
+.page_bar>div{
+	display: inline-block;
+}
 .page_bar a{
+	float:left;
 	display:block;
 	float:left;
 	width:40px;

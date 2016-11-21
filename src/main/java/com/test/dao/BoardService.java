@@ -41,4 +41,9 @@ public class BoardService {
 		// TODO Auto-generated method stub
 		return sqlSession.delete("boardMapper.deleteNews", dto);
 	}
+
+	public int recommandNews(int no) {
+		// TODO Auto-generated method stub
+		return sqlSession.delete("boardMapper.recommandNews", no);
+	}
 }

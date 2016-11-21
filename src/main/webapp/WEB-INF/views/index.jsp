@@ -7,6 +7,7 @@
 <title>Home</title>
 <link rel="stylesheet" type="text/css"
 	href="/blog/resources/css/main.css">
+	<script src="/blog/resources/js/jquery-3.1.1.js"></script>
 <script type="text/javascript" src="/blog/resources/js/main.js"></script>
 <meta charset="UTF-8">
 </head>
@@ -27,15 +28,17 @@
 					<p>${news.content}</p>
 				</div>
 				<div class="news_buttonsBar">
+					<input type="button" value="추천" id="button1" name="recommandBtn" recommandNumber="${news.no}">
 					<input type="button" value="수정"
-						onclick="location.href='modForm.do?no=${news.no}'"> <input
-						type="button" value="삭제"
+						onclick="location.href='modForm.do?no=${news.no}'">
+					<input	type="button" value="삭제"
 						onclick="location.href='delete.do?no=${news.no}'">
 				</div>
 			</div>
 		</c:forEach>
 		<input type="button" value="글쓰기" onclick="location.href='write.do'" />
 		<div class="page_bar">
+			<div>
 			<c:if test="${paging.leftOn==true}">
 				<a class="left_on"
 					href="main.do?page=${paging.firstPage-paging.maxPage}"><</a>
@@ -60,6 +63,7 @@
 			<c:if test="${paging.rightOn==false}">
 				<a class="right_off">></a>
 			</c:if>
+			</div>
 		</div>
 	</section>
 	<!--footer-->
