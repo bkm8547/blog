@@ -104,6 +104,11 @@ section .news_wdate{
 	right:10px;
 	top:3px;
 }
+section .news_recommand{
+	position: absolute;
+	right:180px;
+	top:25px;
+}
 section .news_buttonsBar{
 	display: inline-block;
 	float: right;

@@ -16,3 +16,7 @@ insert into blog_news(title,content,writer,password) values('1234','1234','1234'
 select * from blog_news;
 
 delete from blog_news;
+
+insert into user_ip values('1234',default,12);
+
+select * from user_ip;

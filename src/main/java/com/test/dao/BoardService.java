@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.test.dto.BoardDTO;
+import com.test.dto.UserIpDTO;
 
 
 public class BoardService {
@@ -42,8 +43,17 @@ public class BoardService {
 		return sqlSession.delete("boardMapper.deleteNews", dto);
 	}
 
-	public int recommandNews(int no) {
+	public int recommandNews(UserIpDTO dto) {
 		// TODO Auto-generated method stub
-		return sqlSession.delete("boardMapper.recommandNews", no);
+		System.out.println(dto.getBoard_no());
+		System.out.println(dto.getIp());
+		int result=sqlSession.selectOne("boardMapper.selectUserIp", dto);
+		if(result>0){
+			return 0;
+		}
+		else{
+			sqlSession.delete("boardMapper.insertUserIp", dto);
+			return sqlSession.delete("boardMapper.recommandNews", dto);
+		}
 	}
 }

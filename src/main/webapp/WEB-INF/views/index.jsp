@@ -21,6 +21,7 @@
 				<div class="news_header">
 					<div class="news_title">${news.title}</div>
 					<div class="news_wdate">날짜 : ${news.wdate}</div>
+					<div class="news_recommand" no="${news.no}">추천 : ${news.recommand}</div>
 					<div class="news_writer">작성자 : ${news.writer}</div>
 				</div>
 				<div class="news_content">
@@ -28,7 +29,7 @@
 					<p>${news.content}</p>
 				</div>
 				<div class="news_buttonsBar">
-					<input type="button" value="추천" id="button1" name="recommandBtn" recommandNumber="${news.no}">
+					<input type="button" value="추천" no="${news.no}" id="button1" name="recommandBtn">
 					<input type="button" value="수정"
 						onclick="location.href='modForm.do?no=${news.no}'">
 					<input	type="button" value="삭제"

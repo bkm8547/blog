@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.test.dao.BoardService;
 import com.test.dto.BoardDTO;
 import com.test.dto.PagingDTO;
+import com.test.dto.UserIpDTO;
 import com.test.util.Paging;
 
 /**
@@ -96,12 +97,17 @@ public class MainController {
 	}
 
 	@RequestMapping(value = "/recommand.do", method = RequestMethod.GET)
-		public String recommand(BoardDTO dto, HttpServletResponse response) throws IOException {
-			int result=boardService.recommandNews(dto.getNo());
-			if(result>0)
+		public String recommand(BoardDTO dto, HttpServletRequest request) throws IOException {
+			UserIpDTO ipDTO=new UserIpDTO();
+			ipDTO.setIp(request.getRemoteAddr());
+			ipDTO.setBoard_no(dto.getNo());
+			int result=boardService.recommandNews(ipDTO);
+			if(result>0){
 				System.out.println("recommand success");
-			else
+				return "recommand";}
+			else{
 				System.out.println("recommand failed");
-			return "recommand";
+				return "";
+			}
 	}
 }

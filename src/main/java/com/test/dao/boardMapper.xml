@@ -8,19 +8,25 @@
   	select count(*) from blog_news
   </select>
   <select id="selectNewsList" resultType="com.test.dto.BoardDTO" parameterType="int">
-  	select no,title,content,wdate,writer,imageUrl from blog_news order by no desc limit 3 offset #{page}
+  	select no,title,content,wdate,writer,imageUrl,recommand from blog_news order by no desc limit 3 offset #{page}
   </select>
   <select id="selectNews" resultType="com.test.dto.BoardDTO" parameterType="int">
   	select no,title,content,writer,imageUrl from blog_news where no=#{no}
   </select>
-  <insert id="insertNews" parameterType="com.test.dto.BoardDTO">
+  <select id="selectUserIp" resultType="int" parameterType="com.test.dto.UserIpDTO">
+  	select count(*) from User_ip where board_no=#{board_no} and ip=#{ip}
+  </select>
+   <insert id="insertNews" parameterType="com.test.dto.BoardDTO">
     insert into blog_news(title,content,writer,password,imageUrl) values(#{title},#{content},#{writer},#{password},#{imageUrl})
+  </insert>
+  <insert id="insertUserIp" parameterType="com.test.dto.UserIpDTO">
+  	insert into user_ip values(#{ip},default,#{board_no})
   </insert>
   <update id="updateNews" parameterType="com.test.dto.BoardDTO">
   	update blog_news set title=#{title},content=#{content},writer=#{writer},imageUrl=#{imageUrl} where no=#{no} and password=#{password}
   </update>
-  <update id="recommandNews" parameterType="int">
-  	update blog_news set recommand=recommand+1 where no=#{no}
+  <update id="recommandNews" parameterType="com.test.dto.UserIpDTO">
+  	update blog_news set recommand=recommand+1 where no=#{board_no}
   </update>
   <delete id="deleteNews" parameterType="com.test.dto.BoardDTO">
   	delete from blog_news where no=#{no} and password=#{password}

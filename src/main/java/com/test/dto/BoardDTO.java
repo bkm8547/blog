@@ -8,7 +8,16 @@ public class BoardDTO {
 	private String content;
 	private String wdate;
 	private String imageUrl;
+	private int recommand;
 	
+	
+	
+	public int getRecommand() {
+		return recommand;
+	}
+	public void setRecommand(int recommand) {
+		this.recommand = recommand;
+	}
 	public String getImageUrl() {
 		return imageUrl;
 	}
