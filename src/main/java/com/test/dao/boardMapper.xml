@@ -14,7 +14,7 @@
   	select no,title,content,writer,imageUrl from blog_news where no=#{no}
   </select>
   <select id="selectUserIp" resultType="int" parameterType="com.test.dto.UserIpDTO">
-  	select count(*) from User_ip where board_no=#{board_no} and ip=#{ip}
+  	select count(*) from user_ip where board_no=#{board_no} and ip=#{ip}
   </select>
    <insert id="insertNews" parameterType="com.test.dto.BoardDTO">
     insert into blog_news(title,content,writer,password,imageUrl) values(#{title},#{content},#{writer},#{password},#{imageUrl})
