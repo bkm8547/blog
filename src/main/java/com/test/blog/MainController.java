@@ -57,6 +57,7 @@ public class MainController {
 
 	@RequestMapping(value = "/write.do", method = RequestMethod.POST)
 	public void write(BoardDTO dto, HttpServletResponse response, Model model) throws IOException {
+		System.out.println(dto.getImageUrl());
 		int result = boardService.insertNews(dto);
 		if (result > 0)
 			System.out.println("insert success!!");

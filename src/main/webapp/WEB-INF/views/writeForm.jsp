@@ -40,7 +40,7 @@
 			<tr>
 				<td>이미지URL</td>
 				<td colspan="3" class="title"><input type="text" name="imageUrl"
-					value="${news.title}" /></td>
+					value="${news.imageUrl}" /></td>
 			</tr>
 			<tr>
 				<td>내용</td>
