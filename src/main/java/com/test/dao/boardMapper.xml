@@ -20,7 +20,7 @@
     insert into blog_news(title,content,writer,password,imageUrl) values(#{title},#{content},#{writer},#{password},#{imageUrl})
   </insert>
   <insert id="insertUserIp" parameterType="com.test.dto.UserIpDTO">
-  	insert into user_ip values(#{ip},default,#{board_no})
+  	insert into user_ip values(#{ip},#{board_no},default)
   </insert>
   <update id="updateNews" parameterType="com.test.dto.BoardDTO">
   	update blog_news set title=#{title},content=#{content},writer=#{writer},imageUrl=#{imageUrl} where no=#{no} and password=#{password}

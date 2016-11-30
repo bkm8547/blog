@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.test.dao.BoardService;
 import com.test.dto.BoardDTO;
@@ -96,7 +97,7 @@ public class MainController {
 			System.out.println("delete failed");
 		response.sendRedirect("main.do");
 	}
-
+	@ResponseBody
 	@RequestMapping(value = "/recommand.do", method = RequestMethod.GET)
 		public String recommand(BoardDTO dto, HttpServletRequest request) throws IOException {
 			UserIpDTO ipDTO=new UserIpDTO();
@@ -105,10 +106,10 @@ public class MainController {
 			int result=boardService.recommandNews(ipDTO);
 			if(result>0){
 				System.out.println("recommand success");
-				return "recommand";}
+				return "OK";}
 			else{
 				System.out.println("recommand failed");
-				return "";
+				return null;
 			}
 	}
 }

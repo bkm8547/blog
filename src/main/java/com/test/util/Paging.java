@@ -1,6 +1,6 @@
 package com.test.util;
 
-import javax.servlet.http.HttpServletRequest;
+import org.junit.Test;
 
 import com.test.dto.PagingDTO;
 

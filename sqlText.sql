@@ -7,6 +7,12 @@ create table blog_news(no int not null primary key auto_increment,
 				wdate datetime not null default now()				
 )default charset=utf8
 
+insert into user_ip values(#{ip},default,#{board_no})
+
+create table user_ip(ip char(19),
+board_no int not null,
+foreign key(board_no) references blog_news(no));
+
 alter table blog_news add column recommand int not null default 0;
 
 drop table blog_news;
